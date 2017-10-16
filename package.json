@@ -1,0 +1,25 @@
+{
+  "name": "dt-server",
+  "version": "0.0.1",
+  "description": "Server-side processing implemention for datatables",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "all-tests": "mocha test/*-tests/**/*-tests.js --timeout 10000",
+    "unit-tests": "mocha test/unit-tests/**/*-tests.js --timeout 10000",
+    "integration-tests": "mocha test/integration-tests/**/*-tests.js --timeout 10000",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint ./src/*.js"
+  },
+  "author": "Fekadeab Dejene",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.8.0",
+    "mocha": "^4.0.1",
+    "mocha-lcov-reporter": "^1.3.0"
+  }
+}
