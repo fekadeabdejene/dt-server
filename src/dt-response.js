@@ -2,8 +2,8 @@ var DtErrors = require('./dt-error')
 
 
 /**
-* @public
-* @param {Object} options Available options for the dt-server
+* @public DtResponse
+* @param {Object} options user defined options
 * @description
 * Wraps a database adapter to generate a valid datatable response
 * given a dt-request
@@ -15,11 +15,11 @@ function DtResponse(adapter, options) {
 
 
 /**
-* @public
-* @param {Object} dtrequest DtRequest class object
-* @param {Object} model Model from the database I.E.TableName
-* @param {Mixed}  params Input paramters for model
-* @returns {Array} returns the response data
+* @public get
+* @param {DtRequest} dtrequest DtRequest class object
+* @param {String} model Model from the database I.E.TableName
+* @param {Object}  params Input paramters for model
+* @returns {Promise}
 **/
 DtResponse.prototype.get = function(dtrequest, model, params) {
   var self = this
@@ -35,8 +35,8 @@ DtResponse.prototype.get = function(dtrequest, model, params) {
 
 
 /**
-* @public
-* @param {array} data raw data from database adapter
+* @public formatResponse
+* @param {Array} res raw data from database adapter
 * @returns {Array} returns the response data
 * @description
 * Formats the data the way a datatable likes and

@@ -13,8 +13,15 @@ describe("sqlite3 adapter tests", function() {
       }
     })
 
-    var query = sql3Adapter.dataQuery(dtRequest, "MockModel");
-    console.log(query)
-    assert.fail(true, false)
+    var filterQuery = sql3Adapter.generateFilterQuery(dtRequest, "MockModel");
+    var result = 'SELECT id, name, address, zip, number FROM ( MockModel ) WHERE name LIKE $name OR address LIKE $address OR name LIKE $globalFilter OR address LIKE $globalFilter OR number LIKE $globalFilter ORDER BY id desc, address desc, number asc LIMIT 10 OFFSET 0'
+    var params =  {
+     "$name": '%Column-2 Filter%',
+     "$address": '%Column-3 Filter%',
+     "$globalFilter": '%GlobalFilter%'
+   }
+
+   assert.strictEqual(filterQuery.query, result)
+   assert.deepInclude(filterQuery.params, params)
   })
 })

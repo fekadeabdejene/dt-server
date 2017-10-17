@@ -4,11 +4,12 @@ var DtRequest   = require('./dt-request')
 var DtValidator = require('./dt-validator')
 var extend      = require('./extend')
 
-/**
-* @public DtServer constructor
-* @param {object} options user defined options
+/** DtServer
+* @public constructor
+* @param {Object} adapter DtResponse Adapter
+* @param {Object} options user defined options
 * @description
-* constructor for a new Datatable server object. This is the
+* Creates a new Datatable server object. This is the
 * base object to interact with.
 **/
 function DtServer(adapter, options) {
@@ -40,15 +41,15 @@ function DtServer(adapter, options) {
         }
       }
     }
-  }
+}
 
 
 /**
-* @public
+* @public get
 * @param {DtRequest} request datatable query object
-* @param {Object} model Model from the database that is being requested. I.E. Tablename
+* @param {String} model Model from the database that is being requested. I.E. Tablename
 * @param {Object} params Input paramters for prepared statments, advanced queries, etc.
-* @returns {Promise} returns a promise
+* @returns {Promise}
 **/
 DtServer.prototype.get = function(request, model, params) {
   var self = this

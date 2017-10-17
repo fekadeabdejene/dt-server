@@ -112,18 +112,18 @@ describe("DtRequest Operation Tests", function() {
     const result = [
       {
         column: 'id',
-        order: 'asc'
+        order: 'desc'
       },
       {
         column: 'address',
-        order: 'asc'
+        order: 'desc'
       },
       {
         column: 'number',
         order: 'asc'
       }
     ]
-    
+
     order.forEach(function(ord, i) {
       assert.deepInclude(ord, result[i])
     })

@@ -17,9 +17,10 @@ var DtServerErrors = {
     "INV_RECORDS_FILTER":  'recordsFiltered is an invalid number',
     "INV_ERROR_RESPONSE":  'error property should be of type "string"',
     "INV_MODEL":           'Model is not defined or is not of type string',
-    "INV_RESPONSE_FORMAT": 'Failed to format invalid response'
+    "INV_RESPONSE_FORMAT": 'Failed to format invalid response',
 
     /*adapters errors*/
+    "INV_SQL3":            'sqlite3 is not a defined value'
   }
 }
 

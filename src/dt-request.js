@@ -1,5 +1,5 @@
 /**
-* @public
+* @public DtRequest
 * @param {Object} request datatable request object
 * @param {Object} options Options for this dt-server
 * @returns {DtRequest}
@@ -13,7 +13,7 @@ function DtRequest(request, options) {
 }
 
 /** start
-* @public
+* @public length
 * @returns {Number} returns the length of the current set
 **/
 DtRequest.prototype.length = function() {
@@ -29,7 +29,7 @@ DtRequest.prototype.start = function() {
 }
 
 /**
-* @public
+* @public nextDraw
 * @returns {String} returns the request draw value increased by 1
 * @description
 * For the datatable to render properly the draw needs to be incremented
@@ -40,8 +40,8 @@ DtRequest.prototype.nextDraw = function() {
 
 
 /**
-* @public
-* @returns {Array<String>} returns string array of only the Column.data values
+* @public columnDataSource
+* @returns {Array} returns string array of only the Column.data values
 * @description
 * This is useful for generating queries based off the data source name
 * I.E. generating the SELECT clause
@@ -57,7 +57,7 @@ DtRequest.prototype.columnDataSource = function() {
 
 /**
 * @public searchableColumns
-* @returns {Array<Object>} searchable column object array
+* @returns {Array} searchable column object array
 * @description
 * This function returns all the columns that are searchable
 **/
@@ -70,8 +70,8 @@ DtRequest.prototype.searchableColumns = function() {
 
 
 /**
-* @public
-* @returns {Array<Object>} returns the search objects for columns
+* @public searchesForColumns
+* @returns {Array} returns the search objects for columns
 * @description
 * This function returns all the search objects for columns that
 * are searchable and filter based on the excludeRegex options
@@ -104,7 +104,7 @@ DtRequest.prototype.searchesForColumns = function() {
 
 
 /**
-* @public
+* @public globalFilter
 * @returns {Object} returns the search objects for columns
 * @description
 * This function returns all the search objects for columns that
@@ -134,7 +134,7 @@ DtRequest.prototype.globalFilter = function() {
 
 
 /**
-* @public
+* @public orderedColumns
 * @returns {Object} returns all ordered columns that are orderable
 **/
 DtRequest.prototype.orderedColumns = function() {
