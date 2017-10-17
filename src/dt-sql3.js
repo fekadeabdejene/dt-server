@@ -56,7 +56,7 @@ DtSql3.prototype.countQuery = function(countName, model, params) {
 * @description
 * Generates the filter query given a dtRequest
 **/
-DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total = true) {
+DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total) {
   var columns       = dtRequest.columnDataSource()
   var searchcolumns = dtRequest.searchableColumns()
   var columnSearch  = dtRequest.searchesForColumns()
@@ -65,6 +65,7 @@ DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total 
   var select        = columns.join(', ')
   var columnParams  = {}
   var where         = []
+
 
   //generate where cluase
   searchcolumns.forEach(function(column) {
@@ -156,7 +157,7 @@ DtSql3.prototype.filteredQuery = function(dtRequest, model, params) {
 DtSql3.prototype.dataQuery = function(dtRequest, model, params) {
   var self = this
   return new Promise(function(resolve, reject) {
-    var request = self.generateFilterQuery(dtRequest, model, params)
+    var request = self.generateFilterQuery(dtRequest, model, params, true)
 
     self.sql3.all(request.query, request.params, function(err, data) {
       err ? reject(err) : resolve({
