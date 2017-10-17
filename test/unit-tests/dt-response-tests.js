@@ -1,6 +1,6 @@
-const DtResponse  = require('../../src/dt-response')
-const DtErrors    = require('../../src/dt-error')
-const assert      = require('chai').assert
+var DtResponse  = require('../../src/dt-response')
+var DtErrors    = require('../../src/dt-error')
+var assert      = require('chai').assert
 var MockAdapter   = require('./dt-mock-adapter')
 
 var ValueAdapter  = MockAdapter.ValueAdapter

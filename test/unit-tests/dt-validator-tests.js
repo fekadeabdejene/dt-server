@@ -1,10 +1,10 @@
-const assert = require('chai').assert
-const {
+var assert = require('chai').assert
+var {
   DtValidateRequest,
   DtValidateResponse
  } = require('../../src/dt-validator')
 
-const dtQuery = {
+var dtQuery = {
   "draw":'1',
   "columns":[
 
@@ -20,7 +20,7 @@ const dtQuery = {
   "_": '1'
 }
 
-const dtResponse = {
+var dtResponse = {
   "draw":'99',
   "recordsTotal":'1',
   "recordsFiltered": '1',
@@ -54,7 +54,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     var err3 = DtValidateRequest(null)
     var err4 = DtValidateRequest('')
 
-    const err = 'Validator should not return null when invalid request is passed'
+    var err = 'Validator should not return null when invalid request is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -79,7 +79,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     copy.columns = null
     var err3 = DtValidateRequest(copy)
 
-    const err = 'Validator should not return null when invalid column is passed'
+    var err = 'Validator should not return null when invalid column is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -102,7 +102,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     copy.order = null
     var err3 = DtValidateRequest(copy)
 
-    const err = 'Validator should not return null when invalid orders is passed'
+    var err = 'Validator should not return null when invalid orders is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -125,7 +125,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     copy.draw = []
     var err3 = DtValidateRequest(copy)
 
-    const err = 'Validator should not return null when invalid draw is passed'
+    var err = 'Validator should not return null when invalid draw is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -148,7 +148,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     copy.start = []
     var err3 = DtValidateRequest(copy)
 
-    const err = 'Validator should not return null when invalid starts is passed'
+    var err = 'Validator should not return null when invalid starts is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -171,7 +171,7 @@ describe("DtValidator Request Throw Error Tests", function() {
     copy.length = undefined
     var err3 = DtValidateRequest(copy)
 
-    const err = 'Validator should not return null when invalid length is passed'
+    var err = 'Validator should not return null when invalid length is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -183,7 +183,7 @@ describe("DtValidator Request Throw Error Tests", function() {
   })
 
   it("Should throw an error for every missing key in the request", function() {
-    const keys = [
+    var keys = [
       'columns',
       'order',
       'search',
@@ -231,7 +231,7 @@ describe("DtValidator Response Throw Error Tests", function() {
     copy.draw = []
     var err3 = DtValidateResponse(copy)
 
-    const err = 'Validator should not return null when invalid draw number is passed'
+    var err = 'Validator should not return null when invalid draw number is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -254,7 +254,7 @@ describe("DtValidator Response Throw Error Tests", function() {
     copy.recordsTotal = []
     var err3 = DtValidateResponse(copy)
 
-    const err = 'Validator should not return null when invalid recordsTotal number is passed'
+    var err = 'Validator should not return null when invalid recordsTotal number is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -277,7 +277,7 @@ describe("DtValidator Response Throw Error Tests", function() {
     copy.recordsFiltered = []
     var err3 = DtValidateResponse(copy)
 
-    const err = 'Validator should not return null when invalid recordsFiltered number is passed'
+    var err = 'Validator should not return null when invalid recordsFiltered number is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -300,7 +300,7 @@ describe("DtValidator Response Throw Error Tests", function() {
     copy.error = null
     var err3 = DtValidateResponse(copy)
 
-    const err = 'Validator should not return null when invalid error string is passed'
+    var err = 'Validator should not return null when invalid error string is passed'
 
     assert.isNotNull(err1, err)
     assert.isNotNull(err2, err)
@@ -312,7 +312,7 @@ describe("DtValidator Response Throw Error Tests", function() {
   })
 
   it("Should throw an error for every missing key in the response", function() {
-    const keys = [
+    var keys = [
       'draw',
       'recordsTotal',
       'recordsFiltered',

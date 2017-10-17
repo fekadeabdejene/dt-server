@@ -34,13 +34,14 @@ describe("SQLite3 Integration Tests", function() {
       assert.strictEqual(response.data.length, dataLength === -1 ? recordsTotal : dataLength, "data length")
     }
 
-    var ResponseTest = function(draw, recordsTotal, recordsFiltered, dataLength, offset, model = 'USERS') {
+    var ResponseTest = function(draw, recordsTotal, recordsFiltered, dataLength, offset, model) {
       var query = mockdb.mockQuery()
       var dtServer = new DtServer(new DtSql3(db), {
         response: {
           format: 'object-array'
         }
       })
+      model = model || "USERS"
 
       query.length = dataLength
       query.start  = offset

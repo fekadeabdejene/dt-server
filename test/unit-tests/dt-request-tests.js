@@ -5,21 +5,21 @@ var dtRequestBase = new DtRequest(dtQuery, {request: { excludeRegex: 'false' } }
 
 describe("DtRequest Operation Tests", function() {
   it("Should return draw the draw number incremeneted by 1", function() {
-    const draw = parseInt(dtQuery.draw, 10)
-    const nextDraw = parseInt(dtRequestBase.nextDraw())
+    var draw = parseInt(dtQuery.draw, 10)
+    var nextDraw = parseInt(dtRequestBase.nextDraw())
 
     assert.strictEqual(draw+1, nextDraw);
   })
 
   it("Should return all the column data source names", function() {
-    const dataSources = [
+    var dataSources = [
       'id',
       'name',
       'address',
       'zip',
       'number'
     ]
-    const dtDataSources = dtRequestBase.columnDataSource();
+    var dtDataSources = dtRequestBase.columnDataSource();
 
     assert.lengthOf(dtDataSources, dataSources.length)
 
@@ -29,8 +29,8 @@ describe("DtRequest Operation Tests", function() {
   })
 
   it("Should return all the searchable columns", function() {
-    const dtSearchable = dtRequestBase.searchableColumns()
-    const result = [
+    var dtSearchable = dtRequestBase.searchableColumns()
+    var result = [
       'name',
       'address',
       'number'
@@ -46,8 +46,8 @@ describe("DtRequest Operation Tests", function() {
   it("Should return all searchValues for each column - excludeRegex = false", function() {
     dtRequestBase.options.excludeRegex = 'false'
 
-    const dtSearches = dtRequestBase.searchesForColumns()
-    const result = {
+    var dtSearches = dtRequestBase.searchesForColumns()
+    var result = {
       'name': {
         "value": 'Column-2 Filter',
         "regex": 'false'
@@ -68,8 +68,8 @@ describe("DtRequest Operation Tests", function() {
   it("Should return all searchValues for each column - excludeRegex = true", function() {
     dtRequestBase.options.excludeRegex = 'true'
 
-    const dtSearches = dtRequestBase.searchesForColumns()
-    const result = {
+    var dtSearches = dtRequestBase.searchesForColumns()
+    var result = {
       'name': {
         "value":'Column-2 Filter',
         "regex": 'false'
@@ -86,8 +86,8 @@ describe("DtRequest Operation Tests", function() {
   it("Should return all globalFilter - excludeRegex = true", function() {
     dtRequestBase.options.excludeRegex = 'false'
 
-    const dtSearches = dtRequestBase.globalFilter()
-    const result = {
+    var dtSearches = dtRequestBase.globalFilter()
+    var result = {
       "value":'GlobalFilter',
       "regex": 'false'
     }
@@ -98,8 +98,8 @@ describe("DtRequest Operation Tests", function() {
   it("Should return all globalFilter - excludeRegex = false", function() {
     dtRequestBase.options.excludeRegex = 'false'
 
-    const dtSearches = dtRequestBase.globalFilter()
-    const result = {
+    var dtSearches = dtRequestBase.globalFilter()
+    var result = {
       "value":'GlobalFilter',
       "regex": 'false'
     }
@@ -108,8 +108,8 @@ describe("DtRequest Operation Tests", function() {
   })
 
   it("Should return all orderable columns", function() {
-    const order = dtRequestBase.orderedColumns()
-    const result = [
+    var order = dtRequestBase.orderedColumns()
+    var result = [
       {
         column: 'id',
         order: 'desc'
