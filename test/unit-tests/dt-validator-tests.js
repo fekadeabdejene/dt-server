@@ -1,8 +1,8 @@
-var assert = require('chai').assert
-var {
-  DtValidateRequest,
-  DtValidateResponse
- } = require('../../src/dt-validator')
+var DtValidator        = require('../../src/dt-validator')
+var DtValidateRequest  = DtValidator.DtValidateRequest
+var DtValidateResponse = DtValidator.DtValidateResponse
+var assert             = require('chai').assert
+
 
 var dtQuery = {
   "draw":'1',

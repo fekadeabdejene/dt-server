@@ -1,7 +1,7 @@
-var sqlite3 = require('sqlite3').verbose()
-var rowCount = 50000
+var sqlite3     = require('sqlite3').verbose()
+var rowCount    = 50000
 var initialized = false
-var db = undefined
+var db          = undefined
 
 
 var InitializeDB = function(done) {

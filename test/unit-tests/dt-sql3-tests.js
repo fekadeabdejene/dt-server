@@ -1,7 +1,7 @@
-var DtSql3 = require('../../src/dt-sql3')
-var DtRequest   = require('../../src/dt-request')
-var dtQuery     = require('./dt-mock-request').dtQuery
-var assert      = require('chai').assert
+var DtSql3    = require('../../src/dt-sql3')
+var DtRequest = require('../../src/dt-request')
+var dtQuery   = require('./dt-mock-request').dtQuery
+var assert    = require('chai').assert
 
 describe("sqlite3 adapter tests", function() {
 
