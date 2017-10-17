@@ -41,7 +41,10 @@ describe("SQLite3 Integration Tests", function() {
           format: 'object-array'
         }
       })
-      model = model || "USERS"
+      
+      if(!model) {
+        model = "USERS"
+      }
 
       query.length = dataLength
       query.start  = offset
