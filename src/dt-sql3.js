@@ -8,14 +8,13 @@ var DtErrors = require('./dt-error')
 * constructor for a new SQLite3 Datatable adapter the works
 * within a DTServer object
 **/
-function DtSql3(sql3, options) {
+function DtSql3(sql3) {
 
   if(!sql3) {
     throw DtErrors.INV_SQL3
   }
 
   this.sql3 = sql3
-  this.options = options
 }
 
 /**

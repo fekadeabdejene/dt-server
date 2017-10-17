@@ -23,7 +23,7 @@ function DtServer(adapter, options) {
     },
 
     response: {
-      format: 'value-array', //object-array, value-array,
+      format: 'object-array', //object-array, value-array,
       formatData: undefined, //function(data, format) { }''
       validate: 'false',
     }
@@ -31,7 +31,6 @@ function DtServer(adapter, options) {
 
 
   this.options  = extend(defaults, options)
-
   this.adapter = adapter === Object(adapter) && adapter.get
     ? adapter
     : {
@@ -41,6 +40,8 @@ function DtServer(adapter, options) {
         }
       }
     }
+
+  this.adapter.options = this.options
 }
 
 
