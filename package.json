@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "cd test && npm install && cd .. && nyc mocha test/*-tests/**/*-tests.js --timeout 10000",
+    "test": "cd test && npm install && cd .. && nyc mocha test/*-tests/**/*-tests.js --timeout 60000",
     "unit-tests": "nyc mocha test/unit-tests/**/*-tests.js --timeout 10000",
     "integration-tests": "nyc mocha test/integration-tests/**/*-tests.js --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",

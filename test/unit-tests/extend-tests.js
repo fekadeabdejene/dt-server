@@ -1,5 +1,5 @@
 var extend = require('../../src/extend.js')
-const assert = require('chai').assert
+var assert = require('chai').assert
 var ValueAdapter  = require('./dt-mock-adapter').ValueAdapter
 
 describe("Extend", function() {
@@ -60,7 +60,7 @@ describe("Extend", function() {
 
       response: {
         format: 'value-array',
-        formatData: undefined, 
+        formatData: undefined,
         validate: false,
       }
     }
