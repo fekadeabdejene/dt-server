@@ -13,6 +13,10 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./src/*.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fekadeabdejene/dt-server.git"
+  },
   "author": "Fekadeab Dejene",
   "license": "MIT",
   "devDependencies": {
