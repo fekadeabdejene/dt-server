@@ -41,7 +41,7 @@ describe("SQLite3 Integration Tests", function() {
           format: 'object-array'
         }
       })
-      
+
       if(!model) {
         model = "USERS"
       }

@@ -66,7 +66,6 @@ DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total)
   var columnParams  = {}
   var where         = []
 
-
   //generate where cluase
   searchcolumns.forEach(function(column) {
     var search = columnSearch[column.data]
