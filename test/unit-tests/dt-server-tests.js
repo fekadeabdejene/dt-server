@@ -22,7 +22,25 @@ describe("DtServer Operation Tests", function() {
       })
       .catch(function(err) {
         assert.isNotNull(err)
-        assert.isNotNull(err.error)
+        assert.propertyVal(err, "error", DtErrors.INV_SEARCH)//first request check
+      })
+
+    })
+
+    it("Should throw error invalid model", function() {
+      var dtServer = new DtServer(new ObjectAdapter, {
+        response: {
+          validate: false
+        }
+      })
+
+      return dtServer.get(query, null)
+      .then(function(result) {
+        assert.fail(true, false, "An error should be thrown on an invalid model")
+      })
+      .catch(function(err) {
+        assert.isNotNull(err)
+        assert.propertyVal(err, "error", DtErrors.INV_MODEL)
       })
 
     })
@@ -86,7 +104,7 @@ describe("DtServer Operation Tests", function() {
       })
     })
 
-    it("should note throw an error on a invalid response with no validation", function() {
+    it("should not throw an error on a invalid response with no validation", function() {
       var dtServer = new DtServer({
         get: function() {
           return Promise.resolve({

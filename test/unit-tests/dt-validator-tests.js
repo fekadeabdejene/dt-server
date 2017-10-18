@@ -35,6 +35,7 @@ function deepcopy(object) {
     return object
   }
 }
+
 function dtQueryCopy() {
   return deepcopy(dtQuery)
 }

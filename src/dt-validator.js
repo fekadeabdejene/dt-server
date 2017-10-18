@@ -1,4 +1,4 @@
-var DtServerErrors = require('./dt-error');
+var DtServerErrors = require('./dt-error')
 
 
 var DtValidateRequest = function (request) {
@@ -35,7 +35,7 @@ var DtValidateRequest = function (request) {
     return DtServerErrors.INV_LENGTH
   }
 
-  return null;
+  return null
 }
 
 var DtValidateResponse = function(response) {
@@ -63,7 +63,7 @@ var DtValidateResponse = function(response) {
     return DtServerErrors.INV_ERROR_RESPONSE
   }
 
-  return null;
+  return null
 }
 
 module.exports = {
