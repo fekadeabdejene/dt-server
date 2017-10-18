@@ -55,7 +55,7 @@ DtResponse.prototype.formatResponse = function(res) {
   var formatData = this.options.response.formatData
 
   if(res !== Object(res)) {
-    return {error: DtErrors.INV_RESPONSE_FORMAT}
+    return DtErrors.INV_RESPONSE_FORMAT
   }
 
   if(formatData && typeof formatData === 'function') {
@@ -77,4 +77,4 @@ DtResponse.prototype.formatResponse = function(res) {
   return res
 }
 
-module.exports = DtResponse;
+module.exports = DtResponse

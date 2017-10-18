@@ -29,15 +29,12 @@ function DtServer(adapter, options) {
     }
   }
 
-
   this.options  = extend(defaults, options)
   this.adapter = adapter === Object(adapter) && adapter.get
     ? adapter
     : {
       get: function() {
-        return {
-          "error": DtErrors.INV_ADAPTER
-        }
+        return DtErrors.INV_ADAPTER
       }
     }
 
@@ -56,6 +53,10 @@ DtServer.prototype.get = function(request, model, params) {
   var self = this
 
   return new Promise(function(resolve, reject) {
+    var onErr = function(err) {
+      reject({error: err.toString()})
+    }
+
     var validateRequest = self.options.request.validate
 
     validateRequest = validateRequest === 'false'
@@ -66,15 +67,11 @@ DtServer.prototype.get = function(request, model, params) {
       : null
 
     if(errRequest) {
-      reject({
-        error: errRequest
-      })
+      onErr(errRequest)
     }
 
     if(!model || typeof model !== 'string') {
-      reject({
-        error: DtErrors.INV_MODEL
-      })
+      onErr(DtErrors.INV_MODEL)
     }
 
     var dtRequest     = new DtRequest(request, self.options)
@@ -94,7 +91,7 @@ DtServer.prototype.get = function(request, model, params) {
 
       errResponse ? reject(errResponse) : resolve(result)
     })
-    .catch(reject)
+    .catch(onErr)
   })
 }
 

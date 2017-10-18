@@ -22,23 +22,20 @@ var baseOptions = function() {
 }
 
 describe("DtResponse Operation Tests", function() {
-  it("should return default error response", function(done) {
+  it("should return default error response", function() {
     var res = dtResponse({
       get: function() {
-        return Promise.reject({
-          error: DtErrors.INV_ADAPTER
-        })
+        return Promise.reject(DtErrors.INV_ADAPTER)
       }
     })
 
-    res.get()
+    return res.get()
     .then(function(result) {
       assert.fail(true, false, 'Expected an error response')
     })
     .catch(function(err) {
-      assert.deepPropertyVal(err, 'error', DtErrors.INV_ADAPTER)
+      assert.strictEqual(err, DtErrors.INV_ADAPTER)
     })
-    .then(done)
   })
 
   it("should return empty array on null/undefined data", function() {
@@ -46,8 +43,8 @@ describe("DtResponse Operation Tests", function() {
     var nullData = res.formatResponse(null)
     var undefinedData = res.formatResponse(undefined)
 
-    assert.deepInclude(nullData, {error: DtErrors.INV_RESPONSE_FORMAT})
-    assert.deepInclude(undefinedData,  {error: DtErrors.INV_RESPONSE_FORMAT})
+    assert.deepInclude(nullData, DtErrors.INV_RESPONSE_FORMAT)
+    assert.deepInclude(undefinedData,  DtErrors.INV_RESPONSE_FORMAT)
   })
 
   it("should return custom format properly", function() {

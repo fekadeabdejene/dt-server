@@ -11,7 +11,7 @@ var DtErrors = require('./dt-error')
 function DtSql3(sql3) {
 
   if(!sql3) {
-    throw DtErrors.INV_SQL3
+    throw new Error(DtErrors.INV_SQL3)
   }
 
   this.sql3 = sql3
@@ -90,7 +90,7 @@ DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total)
 
   //generate order by clause
   var orderby = orderColumns.map(function(sorted) {
-      return [sorted.column, sorted.order].join(' ')
+      return sorted.column + " " + sorted.order
     }
   )
   .join(', ');
@@ -106,13 +106,13 @@ DtSql3.prototype.generateFilterQuery = function(dtRequest, model, params, total)
     )
   }
 
-  if(orderby.length > 0 && total) {
-    query.push("ORDER BY",
-      orderby
-    )
-  }
-
   if(total) {
+    if(orderby.length > 0) {
+      query.push("ORDER BY",
+        orderby
+      )
+    }
+
     query.push('LIMIT',
       dtRequest.length(),
       'OFFSET',
