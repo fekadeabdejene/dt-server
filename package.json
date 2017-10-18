@@ -1,19 +1,18 @@
 {
   "name": "dt-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Server-side processing implemention for datatables",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
-  "keywords":[
+  "keywords": [
     "datatable",
     "datatables.net",
     "sqlite3",
     "serverside",
     "processing"
-  ]
-  ,
+  ],
   "scripts": {
     "test": "cd test && npm install && cd .. && nyc mocha test/*-tests/**/*-tests.js --timeout 60000",
     "unit-tests": "nyc mocha test/unit-tests/**/*-tests.js --timeout 10000",
