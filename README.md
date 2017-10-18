@@ -28,10 +28,12 @@ Adapter
   - A class that implements the interface seen below in the DtSql3 Object
   
 ```js
-var dts = require('dt-server').Server
+var datatable = require('dt-server')
+var DtServer  = datatable.DtServer
+var DtSql3    = datatable.DtSql3
 
 router.get('/dtsql3', function(req, res, next) {
-  var dtServer = new dts.DtServer(new dts.DtSql3(db), {
+  var dtServer = new DtServer(new DtSql3(db), {
     response: {
       format: 'object-array'
     }
@@ -91,18 +93,18 @@ Defaults
   }
 }
 ```
-```
+
 - Pass an object with one, or more of these options to override the defaults
-  - request.exlcudeRegex: removes search columns using regex
-  - request.filter: A funciton that augments incoming search strings
-  - request.validate: Flag to validate the datatable JSON request object
-  - response.format: Format of the response data from an adapter
+* `request.exlcudeRegex` removes search columns using regex
+* `request.filter` A funciton that augments incoming search strings
+* `request.validate` Flag to validate the datatable JSON request object
+* `response.format` Format of the response data from an adapter
   
-  - Example Formats:
-    - object-array => [{name: 'a', address'b'}, ...]
-    - value-array => [['a', 'b'], ...]
-  - request.formatData: Custom data formatting function used in-place of the default format function
-  - request.validate: Flag to validate JSON response object
-```
+* `Example Formats`
+   * `object-array => [{name: 'a', address: 'b'}, ...]`
+   * `value-array => [['a', 'b'], ...]`
+* `request.formatData` Custom data formatting function used in-place of the default format function
+* `request.validate` Flag to validate JSON response object
+
 ## License
 MIT
