@@ -1,6 +1,6 @@
 {
   "name": "dt-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Server-side processing implemention for datatables",
   "main": "index.js",
   "directories": {
