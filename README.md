@@ -18,7 +18,7 @@ There are four main objects in this project.
 DtRequest  
   - Wraps the raw query from a datatable with added helper functionality
 
-DtResponse 
+DtResponse
   - Wraps an adapter - a SQLite adapter is provided - and generates a valid response
 
 DtServer   
@@ -26,19 +26,19 @@ DtServer
 
 Adapter
   - A class that implements the interface seen below in the DtSql3 Object
-  
-```js
-var datatable = require('dt-server')
-var DtServer  = datatable.DtServer
-var DtSql3    = datatable.DtSql3
 
-router.get('/dtsql3', function(req, res, next) {
-  var dtServer = new DtServer(new DtSql3(db), {
+```js
+var DtServer = require('dt-server')
+var db       = require('MockSql3DB').Database
+
+router.get('/dtsql3', function(req, res, next) {  
+
+  var dtServer = DtServer('sql3', db, {
     response: {
       format: 'object-array'
     }
   })
-  
+
   dtServer.get(req.query,'USERS')
   .then(function(results) {
     res.status(200).json(results)
@@ -52,26 +52,26 @@ router.get('/dtsql3', function(req, res, next) {
 ### API
 
 - `DtServer([adapter], [options])`
-  * `[adapter] => Adapter for a database I.E. DtSql3 wraps the SQLite database`
-  * `[options] => Custom options`
+  * `[adapter]` Adapter for a database I.E. DtSql3 wraps the SQLite database
+  * `[options]` Custom options
 
 - `DtServer.get([request], [model], (optional)[params])`
-  * `[request] => Datatable JSON request object`
-  * `[model]   => Model to get from the database`
-  * `[params]  => Optional database parameters`
-  * `returns  => {Promise}`
+  * `[request]` Datatable JSON request object
+  * `[model]` Model to get from the database
+  * `[params]` Optional database parameters
+  * `returns` {Promise}
 
 - `DtSql3([Database])`
-  * `[Database] => Database object`
+  * `[Database]` Database object`
 
 - `DtSql3.get([dtRequest], [model], (optional)[params])`
-  * `[dtRequest] => DtRequest object`
-  * `[model]   => Model to get from the database`
-  * `[params]  => Optional database parameters`
-  * `returns  => {Promise}`
+  * `[dtRequest]` DtRequest object`
+  * `[model]` Model to get from the database`
+  * `[params]` Optional database parameters`
+  * `returns`{Promise}`
 
 ### Extending
-Implementing the interface seen in DtSql3 will allow you to pass that adapter 
+Implementing the interface seen in DtSql3 will allow you to pass that adapter
 as you would the DtSql3 object
 
 ### Available Options
@@ -80,7 +80,7 @@ Defaults
 {
   request: {
     excludeRegex: 'true' //'true'|'false'
-    filter: function(str, regex) { 
+    filter: function(str, regex) {
       return str
     },
     validate: 'true' //'true'|'false'
@@ -94,12 +94,12 @@ Defaults
 }
 ```
 
-- Pass an object with one, or more of these options to override the defaults
+Pass an object with one, or more of these options to override the defaults
 * `request.exlcudeRegex` removes search columns using regex
-* `request.filter` A funciton that augments incoming search strings
+* `request.filter` A function that augments incoming search strings
 * `request.validate` Flag to validate the datatable JSON request object
 * `response.format` Format of the response data from an adapter
-  
+
 * `Example Formats`
    * `object-array => [{name: 'a', address: 'b'}, ...]`
    * `value-array => [['a', 'b'], ...]`

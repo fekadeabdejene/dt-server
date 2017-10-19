@@ -1,7 +1,6 @@
 var express  = require('express');
-var DtServer = require('../../src/dt-server');
-var DtSql3   = require('../../src/dt-sql3')
 var MockDB   = require('../integration-tests/dt-mock-sql3-db')
+var DTServer = require('../../index.js');
 var router   = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -9,14 +8,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dtsql3', function(req, res, next) {
-
   MockDB.InitializeDB(function(db) {
-    var dtServer = new DtServer(new DtSql3(db), {
-      response: {
-        format: 'object-array'
-      }
-    })
-
+    var dtServer = DTServer('sql3', db)
     dtServer.get(req.query,'USERS')
     .then(function(results) {
       res.status(200)
@@ -27,7 +20,5 @@ router.get('/dtsql3', function(req, res, next) {
     })
   })
 })
-
-
 
 module.exports = router;
